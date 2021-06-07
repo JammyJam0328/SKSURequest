@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RequestorPages;
 use App\Http\Controllers\RegistrarPages;
 use App\Http\Controllers\AdminPages;
+use App\Http\Controllers\RedirectAuthUsers;
+
 
 
 /*
@@ -21,6 +23,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/dashboard',[RedirectAuthUsers::class,'index']);
 
 Route::group(['middleware'=>[
     'auth:sanctum',
@@ -55,7 +58,7 @@ Route::group(['middleware'=>[
     'registrar',
 ]],function(){
 
-    Route::get('/dashboard',[RegistrarPages::class,'dashboard'])->name('registrar-dashboard');
+    Route::get('/reg/dashboard',[RegistrarPages::class,'dashboard'])->name('registrar-dashboard');
     Route::get('/request',[RegistrarPages::class,'request'])->name('registrar-request');
     Route::get('/documents',[RegistrarPages::class,'documents'])->name('registrar-documents');
 

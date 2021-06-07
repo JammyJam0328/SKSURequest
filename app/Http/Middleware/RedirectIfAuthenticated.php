@@ -6,7 +6,7 @@ use App\Providers\RouteServiceProvider;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\Route;
 class RedirectIfAuthenticated
 {
     /**
@@ -24,15 +24,15 @@ class RedirectIfAuthenticated
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
                if(auth()->user()->role=="requestor"){
-                   return redirect('/requestor/dashboard');
+                return redirect()->route('requestor-dashboard');
                }
 
-               if(auth()->user()->role=="/dashboard"){
-                    return redirect('/requestor/dashboard');
+               if(auth()->user()->role=="registrar"){
+                return redirect()->route('registrar-dashboard');
                 }
 
-                if(auth()->user()->role=="/admin"){
-                    return redirect('/admin/dashboard');
+                if(auth()->user()->role=="admin"){
+                    return redirect()->route('admin-dashboard');
                 }
             }
         }
