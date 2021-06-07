@@ -72,8 +72,9 @@ class Myrequest extends Component
     {
 
      $this->validate([      
-         "firstname"=>"required|alpha",
-         "lastname"=>"required|alpha",
+         "firstname"=>"required|regex:/^[a-zA-Z\s]+$/",
+         'middlename'=>'regex:/^[a-zA-Z\s]+$/|nullable',
+         "lastname"=>"required|regex:/^[a-zA-Z\s]+$/",
          "sex"=>"required",
          "email"=>"required|email",
          "address"=>"required",

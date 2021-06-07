@@ -81,6 +81,9 @@
                         </label>
                         <div class="mt-1 sm:mt-0 sm:col-span-2">
                           <input wire:model="middlename" type="text" name="middlename" id="middlename" placeholder="Optional" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">  
+                          @error('middlename')
+                          <span class="text-red-600">{{$message}}</span>
+                          @enderror
                         </div>
                       </div>
             
